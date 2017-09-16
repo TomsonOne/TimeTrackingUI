@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+$TimeTrackingBackGroundColor: white;
+$TimeTrackingnavBarBackGroundColor:#39383a;
+$TimeTrackingFontColorBright: whitesmoke;
+$TimeTrackingAccentColor: #003A00;
+$TimeTrackingProgressGreen: #003A00;
+$TimeTrackingProgressRed: #B90000;
+$TimeTrackingTableHeadBackgroundColor: black;
+$TimeTrackingTableHeadColor: whitesmoke;
+$TimeTrackingTableRowStripe: #d3d3d3;
+$TimeTrackingTableGreenAccent: green;
+$TimeTrackingTableBlueAccent: blue;
+$TimeTrackingTableGreyAccent: grey;
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background: $TimeTrackingBackGroundColor;
+    font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+h5 {
+    // padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+p {
+    margin-top: 12px;
+}
+
+a {
+    cursor: Pointer;
+}
+
+img {
+    display: block;
+    margin: auto;
+    margin-left: 50px;
+}
+
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (max-width: 1200px) {
+    img {
+        display: none;
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width: 992px) {
+    img {
+        display: none;
+    }
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (max-width: 768px) {}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width: 480px) {}
+
+
+/* Custom, iPhone Retina */
+
+@media only screen and (max-width: 320px) {}
+
+// Particle JS overlay
+#particles-js {
+    // background-color: #b61924;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+#overlay {
+    position: relative;
+}
+
+// Angular Material Progress bar
+.mat-progress-bar {
+    height: 50px !important;
+}
+
+.mat-progress-bar-buffer {
+    background-color: $TimeTrackingProgressRed;
+}
+
+.mat-progress-bar-fill::after {
+    background-color: $TimeTrackingProgressGreen;
+    border-right: 3px white solid;
+}

@@ -1,0 +1,40 @@
+<table class="centertable" cellspacing="0">
+    <thead>
+        <tr class="table-head">
+            <th class="mid-width-cell">Total</th>
+            <th class="mid-width-cell">Date</th>
+            <th class="mid-width-cell">Account</th>
+            <th class="min-width-cell text-right">Hours</th>
+            <th class="">Description</th>
+            <th class="min-width-cell">Work</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-item [ngForOf]="data">
+            <tr class="week-head">
+                <td colspan="1">
+                    ({{getWeekTotal(item.formData)}}/{{item.weekTargetHours}})
+                </td>
+                <td colspan="6">
+                    Week: {{item.week}}
+                </td>
+            </tr>
+            <tr *ngFor="let d of item.formData; let e = even;" class="{{getCssClass(e, d.isEditing)}}">
+                <td class="min-width-cell text-center {{getColorcodeClass(item.formData,d)}}" *ngIf="hideForRowSpan(d)" [attr.rowspan]="getRowSpan(item.formData, d)">
+                    <p>{{getDayName(d)}}</p>
+                    <p class="dayTotal">{{getActualHoursOfDay(item.formData, d)}}</p>
+                </td>
+                <td class="min-width-cell">{{d.date | date}}</td>
+                <td class="min-width-cell">{{d.projectName}}</td>
+                <td class="text-right">{{d.hours}}</td>
+                <td class="">{{d.description}}</td>
+                <td class="min-width-cell">{{d.workingPlace}}</td>
+                <td class="min-width-cell t-btn">
+                    <a class="delete-btn" title="delete" (click)="onDeleteBooking(d)"></a>
+                    <a class="loading-btn" *ngIf="d.isLoading" (click)="onDeleteBooking(d)"></a>
+                </td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>

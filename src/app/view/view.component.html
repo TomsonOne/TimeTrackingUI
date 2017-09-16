@@ -1,0 +1,56 @@
+<span class="carltondance" *ngIf="!showApp" (click)="showApp = !showApp;"></span>
+
+<div class="container-fluid cockpit">
+    <div class="row">
+        <div class="col-4">
+            <img class="img-responsive" src="../assets/logo.png">
+        </div>
+        <div class="col-2 calculation">
+            <app-calculation></app-calculation>
+        </div>
+        <div class="col-2">
+            <!--<piecharts *ngIf="selectedMonth.selected" scale="To Date"></piecharts>-->
+            <piecharts scale="To Date"></piecharts>
+
+        </div>
+        <div class="col-2">
+            <!--<piecharts *ngIf="selectedMonth.selected" scale="Current Week"></piecharts>-->
+            <piecharts scale="Current Week"></piecharts>
+
+        </div>
+        <div class="col-2">
+            <piecharts scale="Month"></piecharts>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <h5>ENTRY</h5>
+        </div>
+    </div>
+    <div *ngFor="let item of formData; let i = index;">
+        <div class="alignright close" *ngIf="i != 0"><a (click)="destroyInput(i)">x</a></div>
+        <app-input [projects]="projects" (saveItem)="saveItem()" [index]="i" [dataItem]="item"></app-input>
+    </div>
+</div>
+<div class="container-fluid cockpit">
+    <div class="row">
+        <div class="col-6">
+            <h5>OVERVIEW</h5>
+        </div>
+        <div class="col-6 text-right">
+            <md-select placeholder="Month" [(ngModel)]="selectedMonth" name="wp">
+                <md-option *ngFor="let month of months" [value]="month.id">
+                    {{month.text}}
+                </md-option>
+            </md-select>
+        </div>
+    </div>
+    <app-table *ngIf="showTable" (onDownload)="handleDownload($event)" (onClose)="handleClose($event)" (onDelete)="handleDelete($event)" (onEdit)="handleEdit($event)" [data]="weeklyActivities">
+    </app-table>
+</div>
+
+
+<!--<button type="button" (click)="modal.show()">test</button>-->
+<login #modal></login>

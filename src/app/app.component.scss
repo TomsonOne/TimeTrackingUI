@@ -1,0 +1,11 @@
+@import "../styles.scss";
+/////////////////////////////////
+//NAVIGATION
+/////////////////////////////////
+.navbar-background {
+    background: $TimeTrackingnavBarBackGroundColor;
+}
+
+.navbar-brand {
+    color: $TimeTrackingFontColorBright !important;
+}

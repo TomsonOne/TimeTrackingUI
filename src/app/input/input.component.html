@@ -1,0 +1,43 @@
+<div class="input-default">
+    <div class="row input-row">
+        <div class="col-2">
+            <md-input-container class="full-width">
+                <input placeholder="Choose a date" mdInput name="picker" [mdDatepicker]="picker" [(ngModel)]="dataItem.date">
+                <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+            </md-input-container>
+            <md-datepicker #picker></md-datepicker>
+        </div>
+        <div class="col-2">
+            <md-input-container class="full-width">
+                <input mdInput name="input" placeholder="Choose Project" [(ngModel)]="dataItem.projectName" [mdAutocomplete]="auto" [formControl]="projectCtrl">
+            </md-input-container>
+            <md-autocomplete #auto="mdAutocomplete">
+                <md-option *ngFor="let project of filteredProjects | async" [value]="project.name">
+                    {{ project.name }}
+                </md-option>
+            </md-autocomplete>
+        </div>
+        <div class="col-1">
+            <md-input-container class="full-width">
+                <input mdInput #postalCode [(ngModel)]="dataItem.hours" maxlength="2" placeholder="Hours Spend" value="">
+            </md-input-container>
+        </div>
+        <div class="col-4">
+            <md-input-container class="full-width">
+                <input mdInput placeholder="Describe what you did" [(ngModel)]="dataItem.description">
+            </md-input-container>
+        </div>
+        <div class="col-2">
+            <md-select class="full-width" placeholder="Working Place" [(ngModel)]="dataItem.workingPlace">
+                <md-option *ngFor="let place of workingPlaces" [value]="place">
+                    {{place}}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-circle" type="submit">
+                <i class="fa fa-floppy-o fa-2x" aria-hidden="true" (click)="clickSave()"></i>
+            </button>
+        </div>
+    </div>
+</div>
